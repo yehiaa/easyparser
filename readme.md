@@ -16,7 +16,7 @@ composer require yehiahamid/easyparse
 
 #Usage 
 
-'''php
+```php
 
 //values must be inside single quotes ''
 $queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever'";
@@ -48,7 +48,7 @@ $parser->perPage();
 $parser->page();
 $parser->search();
 
-'''
+```
 
 #available filtering operator 
 eq equal =
