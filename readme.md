@@ -51,23 +51,23 @@ $parser->search();
 ```
 
 #available filtering operator 
-eq equal =
-ne not equal !=
-gt greater than >
-lt less than <
-le less or equal <=
-ge greater than or equal >=
-
-
+in Query string | in result object 
+--------------- | -----------------
+eq    			| =
+ne    			| !=
+gt	  			| >
+lt	  			| <
+le    			| <=
+ge	  			| >=
 
 
 #fixes
 
 to do(s) 
-1- count 
-2- default values 
-3- configuration 
-4- convert operators to usable 
-5- use default 
-6- new operators le less or equal,ge greater or equal ,
+- count 
+- default values 
+- configuration 
+- convert operators to usable 
+- use default 
+- new operators le less or equal,ge greater or equal
 
