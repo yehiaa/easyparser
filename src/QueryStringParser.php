@@ -152,7 +152,7 @@ class QueryStringParser {
 	{
 		$orderByQueries = [] ;
 		foreach ($orderBysArray as $orderBy) {
-			$orderByQueries [] = new queries\sort($orderBy["field"], $orderBy["direction"]);
+			$orderByQueries [] = new queries\Sort($orderBy["field"], $orderBy["direction"]);
 		}
 
 		return $orderByQueries ;
