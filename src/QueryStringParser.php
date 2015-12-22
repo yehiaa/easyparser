@@ -21,7 +21,11 @@ class QueryStringParser {
         $this->queryString = $this->getQueryStringAsArray($queryString);
 
         $this->reservedKeys = array(
-        	"field", "fields", "embed", "embeds", "filter", "filters", "orderby", "orderBy", "direction"
+        	"field", "fields",
+            "embed", "embeds",
+            "filter", "filters",
+            "orderby", "orderBy",
+            "direction", "search"
         );
     }
 
