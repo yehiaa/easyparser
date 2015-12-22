@@ -7,6 +7,7 @@ class Filter
 	public $field ;
 	public $operator;
 	public $value ;
+    private $operatorsMap ;
 	/**
 	 * 
 	 */
@@ -15,5 +16,22 @@ class Filter
 		$this->field = $field ;
 		$this->operator = $operator ;
 		$this->value = $value ;
+
+        $this->operatorsMap = array(
+            "eq" => "=",
+            "ne" => "!=",
+            "lt" => "<",
+            "gt" => ">",
+            "like" => "like",
+        );
 	}
+
+    /**
+     * get usable operator instead of eq you get =
+     * @return string usable operator
+     */
+    public function getOperator()
+    {
+        return $this->operatorsMap[$this->operator] ;
+    }
 }
