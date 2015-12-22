@@ -25,14 +25,20 @@ function hr($value=90)
 
 
 $queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever'";
+$queryStringCustom = "@anyThing=this is any thing value& @customwithQuotes='this is any shit in quotes'";
 
 $queryStringFields = "@fields=name,surname,code";
 
 $queryStringOrderBy = "@orderby=name,-surname";
+//$queryStringOrderBy = "";
 
 $queryStringEmbed = "@embed=patientProcedures(@fields=name,code)(@filters=nameembed eq 'what ever'),mobiles(@orderby=sortFieldOne)";
 
-$queryString = $queryStringFilters . "&" . $queryStringFields . "&" . $queryStringOrderBy . "&" . $queryStringEmbed;
+$queryString = $queryStringFilters . "&" .
+    $queryStringFields . "&" .
+    $queryStringEmbed  . "&" .
+//    $queryStringOrderBy . "&" .
+    $queryStringCustom;
 
 if (isset($_SERVER['QUERY_STRING'])) {
     $queryString = $_SERVER['QUERY_STRING'];
@@ -47,11 +53,16 @@ echo urldecode($queryString) ;
 hr();
 
 $parser = new \yehiaHamid\easyParse\QueryStringParser($queryString);
+
+print_r($parser->get("anyThing"));
+hr();
+print_r($parser->get("customwithQuotes"));
+hr();
 print_r($parser->filters());
 hr();
 print_r($parser->fields());
 hr();
-print_r($parser->orderBy());
+print_r($parser->orderBy("firsrField,-secondField"));
 hr();
 print_r($parser->embed());
 
