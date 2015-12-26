@@ -92,7 +92,6 @@ $embedResult[1]->orderBy // array of order by objects
 
 #available filtering operator 
 in Query string | in result object 
-				| using getOperator()
 --------------- | -----------------
 eq    			| =
 ne    			| !=
