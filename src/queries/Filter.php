@@ -23,6 +23,9 @@ class Filter
             "lt" => "<",
             "gt" => ">",
             "like" => "like",
+            "ilike" => "ilike",
+            "le" => "<=",
+            "ge" => ">=",
         );
 	}
 
