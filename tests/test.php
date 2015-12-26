@@ -24,7 +24,7 @@ function hr($value=90)
 }
 
 
-$queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever'";
+$queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever',x le 'htest',Y ge \"greater's or less \",xx le \"less's or less \"";
 $queryStringCustom = "@anyThing=this is any thing value& @customwithQuotes='this is any shit in quotes'";
 
 $queryStringFields = "@fields=name,surname,code";
@@ -74,6 +74,11 @@ hr();
 // $result = FilterParser::run($result);
 hr();
 // var_dump($result);
-
+hr();
+foreach ($parser->filters() as $filter) {
+	hr();
+	print_r($filter->getOperator());
+}
+hr();
 hr();
 // var_dump($filters);
