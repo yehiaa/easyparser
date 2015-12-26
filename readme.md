@@ -9,8 +9,8 @@ sort,
 get certain fields
 and embed resources
 
-#installation 
-using composer 
+#installation using composer 
+
 composer require yehiahamid/easyparse
 
 
@@ -32,7 +32,7 @@ $queryStringEmbed = "@embed=resourceOne(@fields=name,code)(@filters=nameembed eq
 $queryString = $queryStringFilters . "&" . $queryStringFields . "&" . $queryStringOrderBy . "&" . $queryStringEmbed;
 
 //in real app you would use $_SERVER['QUERY_STRING'];
-this is optional param if not set it will use server query string 
+//this is optional param if not set it will use server query string 
 $parser = new yehiaHamid\easyParse\QueryStringParser($queryString);
 
 $parser->fields(); //return array of fields | null if empty
@@ -92,6 +92,7 @@ $embedResult[1]->orderBy // array of order by objects
 
 #available filtering operator 
 in Query string | in result object 
+				| using getOperator()
 --------------- | -----------------
 eq    			| =
 ne    			| !=
@@ -102,10 +103,4 @@ ilike  			| ilike
 le    			| <= 
 ge	  			| >= 
 
-
-#fixes
-
-to do(s)
-- configuration
-- new operators le less or equal,ge greater or equal
 
