@@ -13,10 +13,12 @@ class Parser
         self::$_lexerResult = $lexerResult;
 		self::$filters = null ;
         $count = count($lexerResult);
+        var_dump($lexerResult);
 		if($count < 3 ) //exception invalid argument some arguments are missing
 		{
             throw new \Exception("invalid argument some arguments are missing", 1);
-		}elseif(($count > 3) && ($count % 3 != 1) ){
+		}
+        elseif(($count > 3) && (($count - 3) % 4 != 0) ){
             throw new \Exception("invalid argument some arguments are missing", 1);
 		}
         return self::excute($lexerResult);
@@ -54,7 +56,7 @@ class Parser
             }
             
             if ($token["token"] == "T_OPERATOR") {
-                $filter["operator"] = $token["match"];
+                $filter["operator"] = trim($token["match"]);
                 continue;
             }
             
