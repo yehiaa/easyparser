@@ -98,6 +98,7 @@ ne    			| !=
 gt	  			| >
 lt	  			| <
 like  			| like
+ilike  			| ilike
 le    			| <= 
 ge	  			| >= 
 
