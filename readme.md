@@ -18,7 +18,7 @@ composer require yehiahamid/easyparse
 
 ```php
 
-//values must be inside single quotes ''
+//values must be inside single or double quotes 'what ever' | "what ever"
 $queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever'";
 
 $queryStringFields = "@fields=name,surname,code";
@@ -98,8 +98,8 @@ ne    			| !=
 gt	  			| >
 lt	  			| <
 like  			| like
-le    			| <= //not implemented yet
-ge	  			| >= //not implemented yet
+le    			| <= 
+ge	  			| >= 
 
 
 #fixes
