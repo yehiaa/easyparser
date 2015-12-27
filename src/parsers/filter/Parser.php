@@ -13,7 +13,7 @@ class Parser
         self::$_lexerResult = $lexerResult;
 		self::$filters = null ;
         $count = count($lexerResult);
-        var_dump($lexerResult);
+
 		if($count < 3 ) //exception invalid argument some arguments are missing
 		{
             throw new \Exception("invalid argument some arguments are missing", 1);
