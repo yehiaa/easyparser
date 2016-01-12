@@ -18,9 +18,15 @@ composer require yehiahamid/easyparse
 
 ```php
 
-//values must be inside single or double quotes 'what ever' | "what ever"
+//values must be inside single or double quotes if it contains white spaces or special chars 'what ever' | "what ever"
 $queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever'";
+// otherwise you can use use the value without quotes 
+// ex : 
 
+$queryStringFilters = "@filters=id eq 12";
+$queryStringFilters = "@filters=id eq anyWordsWithoutspacesOrSpecialChars";
+
+//fields
 $queryStringFields = "@fields=name,surname,code";
 
 //name is assc , surname desc

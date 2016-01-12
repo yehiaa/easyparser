@@ -14,6 +14,7 @@ class Parser
 		self::$filters = null ;
         $count = count($lexerResult);
 
+        // var_dump($lexerResult);die;
 		if($count < 3 ) //exception invalid argument some arguments are missing
 		{
             throw new \Exception("invalid argument some arguments are missing", 1);
@@ -51,8 +52,12 @@ class Parser
         foreach (self::$_lexerResult as $token) {
             
             if ($token["token"] == "T_WORD") {
-                $filter["field"] = $token["match"];
-                continue;
+                if(! isset($filter["field"]))
+                {
+                    $filter["field"] = $token["match"];
+                    continue;
+                }
+
             }
             
             if ($token["token"] == "T_OPERATOR") {
@@ -66,6 +71,17 @@ class Parser
                 self::$filters [] = self::validate($filter);
                 $filter = [] ;
                 continue;
+            }
+
+            if ($token["token"] == "T_WORD") {
+                if(isset($filter["field"]))
+                {
+                    $filter["value"] = trim($token["match"]);
+                    self::$filters [] = self::validate($filter);
+                    $filter = [] ;
+                    continue;
+                }
+                
             }
             
             if ($token["token"] == "T_COMMA") {

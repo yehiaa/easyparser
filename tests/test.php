@@ -24,7 +24,7 @@ function hr($value=90)
 }
 
 
-$queryStringFilters = "@filters=name eq 'what ever',surname ne 'what ever',x le 'htest',Y ge \"greater's or less \",xx le \"less's or less \"";
+$queryStringFilters = "@filters=id eq 12 ,id eq anyWordsWithoutspacesOrSpecialChars , name eq 'what ever',surname ne 'what ever',x le 'htest',Y ge \"greater's or less \",xx le \"10/10/2015 10:10:00 am pm\"";
 $queryStringCustom = "@anyThing=this is any thing value& @customwithQuotes='this is any shit in quotes'";
 
 $queryStringFields = "@fields=name,surname,code";
