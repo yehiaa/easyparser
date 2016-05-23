@@ -39,19 +39,6 @@ class QueryParserTest extends PHPUnit_Framework_TestCase
 		$this->assertNull($result);
 	}
 
-	/**
-	 * @expectedException Exception 
-	 *
-	 */
-	public function testOrderByThrowExceptionWhenEmptyArguments()
-	{
-		$queryStringOrderBy = "@orderby=";
-
-		$qs =  $queryStringOrderBy ;
-
-		$q = new yehiaHamid\easyParse\QueryStringParser($qs);
-		$result = $q->orderBy();
-	}
 
 	public function testOrderBySingleValue()
 	{

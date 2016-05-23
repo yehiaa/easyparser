@@ -40,16 +40,5 @@ class EmbedParserTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals("fieldx,-fieldone", $parserResult[1]["orderby"]);
 	}
 
-	public function testPagination()
-	{
-		$this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-		$string = "resourceOne,resource2(@page=10)";
-		$lexerResult = $this->getLexerResult($string);
-		$parserResult = yehiaHamid\easyParse\parsers\embed\Parser::run($lexerResult);
-
-	}
-
 }
 
