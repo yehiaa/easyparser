@@ -31,7 +31,7 @@ class Parser
         // word > operator > Quoted 
         // word > operator > word || quoted
         $cont = count(self::$_lexerResult);
-        $embed = [] ;
+        $embed = array() ;
         
         foreach (self::$_lexerResult as $token) {
             
@@ -54,7 +54,7 @@ class Parser
                     
                 case 'T_COMMA':
                     self::$embeds [] = self::validate($embed);
-                    $embed = [] ;
+                    $embed = array() ;
                     break;
                     
                 default:

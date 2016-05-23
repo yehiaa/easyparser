@@ -188,7 +188,7 @@ class QueryStringParser {
 	
 	private function getFilterQueries(array $filtersArray)
 	{
-		$filterQueries = [];
+		$filterQueries = array();
 
 		foreach ($filtersArray as $filter) {
 			$filterQueries [] = new queries\Filter($filter["field"], $filter["operator"], $filter["value"]);
@@ -210,7 +210,7 @@ class QueryStringParser {
 
 	private function getOrderBysQueries(array $orderBysArray)
 	{
-		$orderByQueries = [] ;
+		$orderByQueries = array() ;
 		foreach ($orderBysArray as $orderBy) {
 			$orderByQueries [] = new queries\Sort($orderBy["field"], $orderBy["direction"]);
 		}
@@ -227,7 +227,7 @@ class QueryStringParser {
 
 	private function getEmbedQueries(array $embedsArray)
 	{
-		$embedQueries = [] ;
+		$embedQueries = array() ;
 		foreach ($embedsArray as $embed) {
 			$filtersQueries = null ;
 			$fields = null ;

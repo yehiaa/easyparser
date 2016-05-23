@@ -34,7 +34,7 @@ class Parser
         // this is a complete query 
         //field,-fieldtwo (-) means descending order 
         $cont = count(self::$_lexerResult);
-        $orderBy = [] ;
+        $orderBy = array() ;
         foreach (self::$_lexerResult as $token) {
             
             if ($token["token"] == "T_WORD") {
@@ -49,7 +49,7 @@ class Parser
             
             if ($token["token"] == "T_COMMA") {
                 self::$orderBys [] = self::validate($orderBy);
-                $orderBy = [] ;
+                $orderBy = array() ;
             }
         }
 

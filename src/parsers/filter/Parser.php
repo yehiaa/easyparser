@@ -48,7 +48,7 @@ class Parser
         // word > operator > Quoted 
         // word > operator > word || quoted
         $count = count(self::$_lexerResult);
-        $filter = [] ;
+        $filter = array() ;
         foreach (self::$_lexerResult as $token) {
             
             if ($token["token"] == "T_WORD") {
@@ -69,7 +69,7 @@ class Parser
                 
                 $filter["value"] = trim($token["match"], "'\"");
                 self::$filters [] = self::validate($filter);
-                $filter = [] ;
+                $filter = array() ;
                 continue;
             }
 
@@ -78,14 +78,14 @@ class Parser
                 {
                     $filter["value"] = trim($token["match"]);
                     self::$filters [] = self::validate($filter);
-                    $filter = [] ;
+                    $filter = array() ;
                     continue;
                 }
                 
             }
             
             if ($token["token"] == "T_COMMA") {
-                $filter = [] ;
+                $filter = array() ;
             }
         }
         

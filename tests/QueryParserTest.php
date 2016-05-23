@@ -64,7 +64,6 @@ class QueryParserTest extends PHPUnit_Framework_TestCase
 
 		$q = new yehiaHamid\easyParse\QueryStringParser($qs);
 		$result = $q->orderBy();
-		//var_dump($result);
 
 		$this->assertTrue($result[0]->field == "name");
 		$this->assertTrue($result[0]->direction == "desc");
