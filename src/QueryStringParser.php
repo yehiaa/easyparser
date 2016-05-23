@@ -110,12 +110,7 @@ class QueryStringParser {
      */
     public function offset($default=null)
 	{
-        if(isset($this->queryString["@offset"]))
-        {
-			return $this->queryString["@offset"];
-        }
-
-		return $default;
+        return isset($this->queryString["@offset"]) ? $this->queryString["@offset"] : $default;
 	}
 
     /**
@@ -125,12 +120,7 @@ class QueryStringParser {
      */
     public function limit($default=null)
 	{
-        if(isset($this->queryString["@limit"]))
-        {
-			return $this->queryString["@limit"];
-        }
-
-		return $default;
+        return isset($this->queryString["@limit"]) ? $this->queryString["@limit"] : $default;
 	}
 
     /**
@@ -140,12 +130,7 @@ class QueryStringParser {
      */
 	public function perPage($default=null)
 	{
-        if(isset($this->queryString["@perpage"]))
-        {
-			return $this->queryString["@perpage"];
-        }
-
-		return $default;
+        return isset($this->queryString["@perpage"]) ? $this->queryString["@perpage"] : $default;
 	}
 
     /**
@@ -155,12 +140,7 @@ class QueryStringParser {
      */
 	public function page($default=null)
 	{
-        if(isset($this->queryString["@page"]))
-        {
-			return $this->queryString["@page"];
-        }
-
-		return $default;
+        return isset($this->queryString["@page"]) ? $this->queryString["@page"] : $default ;
 	}
 
     /**
@@ -171,13 +151,7 @@ class QueryStringParser {
     public function orderBy($orderBy=null)
     {
         $orderBysStr = null ;
-
-        if (isset($this->queryString["@orderby"])) {
-            $orderBysStr = $this->queryString["@orderby"] ;
-        }elseif($orderBy)
-        {
-            $orderBysStr = $orderBy ;
-        }
+        $orderBysStr = (isset($this->queryString["@orderby"])) ? $this->queryString["@orderby"] : $orderBy;
 
         if($orderBysStr)
         {
@@ -209,12 +183,7 @@ class QueryStringParser {
      */
     public function search()
     {
-        if(isset($this->queryString["@search"]))
-        {
-            return $this->queryString["@search"];
-        }
-
-		return null;
+        return (isset($this->queryString["@search"])) ? $this->queryString["@search"] : null;
 	}
 	
 	private function getFilterQueries(array $filtersArray)
