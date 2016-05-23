@@ -1,4 +1,6 @@
 #easyparse 
+![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)
+
 easy query is a simple query language for rest api php 
 
 it is framework agnostic
@@ -8,7 +10,6 @@ filter,
 sort, 
 get certain fields
 and embed resources
-[![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)]
 #installation using composer 
 
 composer require yehiahamid/easyparse
