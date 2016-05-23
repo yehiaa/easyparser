@@ -7,5 +7,5 @@ php:
 script: phpunit
 
 before_script:
-    - php composer install
+    - composer install
 
