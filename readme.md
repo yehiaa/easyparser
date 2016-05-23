@@ -8,7 +8,7 @@ filter,
 sort, 
 get certain fields
 and embed resources
-
+[![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)]
 #installation using composer 
 
 composer require yehiahamid/easyparse
