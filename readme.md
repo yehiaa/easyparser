@@ -1,5 +1,5 @@
 #easyparse 
-![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)
+[![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)](https://travis-ci.org/yehiaa/easyparser)
 
 easy query is a simple query language for rest api php 
 
