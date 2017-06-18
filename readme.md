@@ -1,21 +1,22 @@
-#easyparse 
+# easyparser
+
 [![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)](https://travis-ci.org/yehiaa/easyparser)
 
-easy query is a simple query language for rest api php 
+easy query is a simple query string parser for rest api php.
 
-it is framework agnostic
+it's simply convert the QS to structured types 
 
 you can parse your query string to 
 filter, 
 sort, 
 get certain fields
 and embed resources
-#installation using composer 
+# installation using composer 
 
 composer require yehiahamid/easyparse
 
 
-#Usage 
+# Usage 
 
 ```php
 
@@ -97,7 +98,7 @@ $embedResult[1]->orderBy // array of order by objects
 
 ```
 
-#available filtering operator 
+# available filtering operator 
 in Query string | in result object 
 --------------- | -----------------
 eq    			| =
