@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/yehiaa/easyparser.svg?branch=master)](https://travis-ci.org/yehiaa/easyparser)
 
-easy query is a simple query string parser for rest api php.
+easyparser is a simple query string parser for rest api php.
 
-it's simply convert the QS to structured types 
+it's simply convert the QS to structured types.
 
 you can parse your query string to 
 filter, 
