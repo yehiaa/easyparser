@@ -3,6 +3,7 @@
     "description": "query sting parser for rest apis supports filterations, sorting, fields, embeds",
     "type": "package",
     "require-dev": {
+        "phpunit/phpunit": "^5.7"
     },
     "authors": [
         {

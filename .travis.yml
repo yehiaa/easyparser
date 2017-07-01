@@ -6,7 +6,7 @@ php:
     - 5.4
     - 5.3
     - hhvm
-script: phpunit
+script: php vendor/phpunit/phpunit/phpunit
 
 before_script:
     - composer install
