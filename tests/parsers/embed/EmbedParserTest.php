@@ -1,6 +1,6 @@
 <?php 
 
-class EmbedParserTest extends PHPUnit_Framework_TestCase
+class EmbedParserTest extends \PHPUnit_Framework_TestCase
 {
 	public function getLexerResult($string)
 	{

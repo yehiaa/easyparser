@@ -1,6 +1,6 @@
 <?php
 
-class FilterLexerTest extends PHPUnit_Framework_TestCase
+class FilterLexerTest extends \PHPUnit_Framework_TestCase
 {
 	public function testWorkingFilterSingleQuote()
 	{

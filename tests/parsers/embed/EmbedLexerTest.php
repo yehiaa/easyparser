@@ -3,7 +3,7 @@
 /**
  * test filter parser and lexer
  */
-class EmbedLexerTest extends PHPUnit_Framework_TestCase
+class EmbedLexerTest extends \PHPUnit_Framework_TestCase
 {
 	public function testGetResources()
 	{

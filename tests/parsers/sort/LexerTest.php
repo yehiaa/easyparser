@@ -3,7 +3,7 @@
 /**
  * test filter parser and lexer
  */
-class SortTest extends PHPUnit_Framework_TestCase
+class SortTest extends \PHPUnit_Framework_TestCase
 {
 	public function testWorkingLexer()
 	{
