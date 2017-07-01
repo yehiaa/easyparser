@@ -3,7 +3,7 @@
 class Lexer extends \yehiaHamid\easyParse\parsers\Lexer {
     // "field1 eq 'what ever', field2 nq 'term two'"
 
-    protected static $_terminals = array(
+    protected static $terminals = array(
         "/^(\w+)/" => "T_WORD",
         "/^(\s+)/" => "T_WHITESPACE",
         "/^\(@filters=(.*?)\)/" => "T_FILTERS",

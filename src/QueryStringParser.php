@@ -17,11 +17,11 @@ class QueryStringParser {
      * @param null $queryString
      */
     public function __construct($queryString=null){
-    	$queryString = ($queryString) ? $queryString : $_SERVER['QUERY_STRING'];
+        $queryString = ($queryString) ? $queryString : $_SERVER['QUERY_STRING'];
         $this->queryString = $this->getQueryStringAsArray($queryString);
 
         $this->reservedKeys = array(
-        	"field", "fields",
+            "field", "fields",
             "embed", "embeds",
             "filter", "filters",
             "orderby", "orderBy",
@@ -31,7 +31,7 @@ class QueryStringParser {
 
     private function checkReservedKeys($key)
     {
-    	return in_array($key, $this->reservedKeys);
+        return in_array($key, $this->reservedKeys);
     }
 
     private function getQueryStringAsArray($queryString){
@@ -57,16 +57,16 @@ class QueryStringParser {
      */
     public function get($key, $default=null)
     {
-    	if($this->checkReservedKeys($key) ) return null ;
+        if($this->checkReservedKeys($key) ) return null ;
 
-    	$sparam = "@".trim($key);
+        $sparam = "@".trim($key);
 
         if(isset($this->queryString[$sparam]) )
         {
-        	return $this->queryString[$sparam] ;
+            return $this->queryString[$sparam] ;
         }
 
-		return $default;
+        return $default;
     }
 
     /**
@@ -78,14 +78,14 @@ class QueryStringParser {
     {
         if(isset($this->queryString["@fields"]))
         {
-			if (empty($this->queryString["@fields"])) {
-				throw new \Exception("empty fields");	
-			}
+            if (empty($this->queryString["@fields"])) {
+                throw new \Exception("empty fields");   
+            }
 
             return $this->stringToArray($this->queryString["@fields"]);
         }
 
-		return null;
+        return null;
     }
 
     /**
@@ -96,11 +96,11 @@ class QueryStringParser {
     {
         if(isset($this->queryString["@embed"]))
         {
-			$parsed = $this->getEmbedData($this->queryString["@embed"]);
-			return $this->getEmbedQueries($parsed);
+            $parsed = $this->getEmbedData($this->queryString["@embed"]);
+            return $this->getEmbedQueries($parsed);
         }
 
-		return null;
+        return null;
     }
 
     /**
@@ -109,9 +109,9 @@ class QueryStringParser {
      * @return string|null value of offset if found or null or default value if set
      */
     public function offset($default=null)
-	{
+    {
         return isset($this->queryString["@offset"]) ? $this->queryString["@offset"] : $default;
-	}
+    }
 
     /**
      * get @limit param if found
@@ -119,29 +119,29 @@ class QueryStringParser {
      * @return string|null value of limit if found or null or default value if set
      */
     public function limit($default=null)
-	{
+    {
         return isset($this->queryString["@limit"]) ? $this->queryString["@limit"] : $default;
-	}
+    }
 
     /**
      * get @perpage param if found
      * @param string $default optional default value if key not found
      * @return string|null value of perpage if found or null or default value if set
      */
-	public function perPage($default=null)
-	{
+    public function perPage($default=null)
+    {
         return isset($this->queryString["@perpage"]) ? $this->queryString["@perpage"] : $default;
-	}
+    }
 
     /**
      * get @page param if found
      * @param string $default optional default value if key not found
      * @return string|null value of page if found or null or default value if set
      */
-	public function page($default=null)
-	{
+    public function page($default=null)
+    {
         return isset($this->queryString["@page"]) ? $this->queryString["@page"] : $default ;
-	}
+    }
 
     /**
      * get @orderby param if found
@@ -159,7 +159,7 @@ class QueryStringParser {
             return $this->getOrderBysQueries($parsed);
         }
 
-		return null;
+        return null;
     }
 
     /**
@@ -170,11 +170,11 @@ class QueryStringParser {
     {
         if(isset($this->queryString["@filters"]))
         {
-			$parsedFilters = $this->getFiltersData($this->queryString["@filters"]);
-			return 	$this->getFilterQueries($parsedFilters);
+            $parsedFilters = $this->getFiltersData($this->queryString["@filters"]);
+            return  $this->getFilterQueries($parsedFilters);
         }
 
-		return null;
+        return null;
     }
 
     /**
@@ -184,77 +184,74 @@ class QueryStringParser {
     public function search()
     {
         return (isset($this->queryString["@search"])) ? $this->queryString["@search"] : null;
-	}
-	
-	private function getFilterQueries(array $filtersArray)
-	{
-		$filterQueries = array();
+    }
+    
+    private function getFilterQueries(array $filtersArray)
+    {
+        $filterQueries = array();
 
-		foreach ($filtersArray as $filter) {
-			$filterQueries [] = new queries\Filter($filter["field"], $filter["operator"], $filter["value"]);
-		}
-		return $filterQueries ;
-	}
-	
-	private function getFiltersData($filtersString)
-	{
-		$data = parsers\filter\Lexer::run($filtersString);
-		return parsers\filter\Parser::run($data);
-	}
+        foreach ($filtersArray as $filter) {
+            $filterQueries [] = new queries\Filter($filter["field"], $filter["operator"], $filter["value"]);
+        }
+        return $filterQueries ;
+    }
 
-	private function getOrderBysData($orderBysString)
-	{
-		$data = parsers\sort\Lexer::run($orderBysString);
-		return parsers\sort\Parser::run($data);
-	}
+    private function getFiltersData($filtersString)
+    {
+        return parsers\filter\Parser::run(parsers\filter\Lexer::run($filtersString));
+    }
 
-	private function getOrderBysQueries(array $orderBysArray)
-	{
-		$orderByQueries = array() ;
-		foreach ($orderBysArray as $orderBy) {
-			$orderByQueries [] = new queries\Sort($orderBy["field"], $orderBy["direction"]);
-		}
+    private function getOrderBysData($orderBysString)
+    {
+        return parsers\sort\Parser::run(parsers\sort\Lexer::run($orderBysString));
+    }
 
-		return $orderByQueries ;
-	}
+    private function getOrderBysQueries(array $orderBysArray)
+    {
+        $orderByQueries = array() ;
+        foreach ($orderBysArray as $orderBy) {
+            $orderByQueries [] = new queries\Sort($orderBy["field"], $orderBy["direction"]);
+        }
 
-	private function getEmbedData($embedString)
-	{
-		$data = parsers\embed\Lexer::run($embedString);
-		return parsers\embed\Parser::run($data);
-	}
+        return $orderByQueries ;
+    }
+
+    private function getEmbedData($embedString)
+    {
+        return parsers\embed\Parser::run(parsers\embed\Lexer::run($embedString));
+    }
 
 
-	private function getEmbedQueries(array $embedsArray)
-	{
-		$embedQueries = array() ;
-		foreach ($embedsArray as $embed) {
-			$filtersQueries = null ;
-			$fields = null ;
-			$sortQueries = null ;
+    private function getEmbedQueries(array $embedsArray)
+    {
+        $embedQueries = array() ;
+        foreach ($embedsArray as $embed) {
+            $filtersQueries = null ;
+            $fields = null ;
+            $sortQueries = null ;
 
-			if (isset($embed["filters"])) {
-				$data =	$this->getFiltersData($embed["filters"]);
-				$filtersQueries = $this->getFilterQueries($data);
-			}
+            if (isset($embed["filters"])) {
+                $data = $this->getFiltersData($embed["filters"]);
+                $filtersQueries = $this->getFilterQueries($data);
+            }
 
-			if (isset($embed["fields"])) {
-				$fields = $this->stringToArray($embed["fields"]);	
-			}
+            if (isset($embed["fields"])) {
+                $fields = $this->stringToArray($embed["fields"]);   
+            }
 
-			if (isset($embed["orderby"])) {
-				$data = $this->getOrderBysData($embed["orderby"]);
-				$sortQueries = 	$this->getOrderBysQueries($data); 
-			}
+            if (isset($embed["orderby"])) {
+                $data = $this->getOrderBysData($embed["orderby"]);
+                $sortQueries =  $this->getOrderBysQueries($data); 
+            }
 
-			$embedQuery = new queries\Embed($embed["resource"], $filtersQueries, $fields, $sortQueries );
+            $embedQuery = new queries\Embed($embed["resource"], $filtersQueries, $fields, $sortQueries );
 
-			$embedQueries [] = $embedQuery;
+            $embedQueries [] = $embedQuery;
 
-		}			
+        }           
 
-		return $embedQueries ;
-	}
+        return $embedQueries ;
+    }
 }
 
 

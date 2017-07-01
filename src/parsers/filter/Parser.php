@@ -5,26 +5,24 @@
  */
 class Parser 
 {
-    private static $_lexerResult; 
+    private static $lexerResult; 
     private static $filters;
-    
+
     public static function run($lexerResult)
     {
-        self::$_lexerResult = $lexerResult;
-		self::$filters = null ;
+        self::$lexerResult = $lexerResult;
+        self::$filters = null ;
         $count = count($lexerResult);
 
         // var_dump($lexerResult);die;
-		if($count < 3 ) //exception invalid argument some arguments are missing
-		{
+        if($count < 3 ) //exception invalid argument some arguments are missing
             throw new \Exception("invalid argument some arguments are missing", 1);
-		}
-        elseif(($count > 3) && (($count - 3) % 4 != 0) ){
+        elseif(($count > 3) && (($count - 3) % 4 != 0) )
             throw new \Exception("invalid argument some arguments are missing", 1);
-		}
+
         return self::excute($lexerResult);
     }
-    
+
     private static function validate(array $valuesToParse)
     {
         if (!isset($valuesToParse["field"])) {
@@ -41,15 +39,14 @@ class Parser
         
         return $valuesToParse ;
     }
-    
+
     private static function excute()
     {
         // this is a complete query 
         // word > operator > Quoted 
         // word > operator > word || quoted
-        $count = count(self::$_lexerResult);
         $filter = array() ;
-        foreach (self::$_lexerResult as $token) {
+        foreach (self::$lexerResult as $token) {
             
             if ($token["token"] == "T_WORD") {
                 if(! isset($filter["field"]))
@@ -81,14 +78,14 @@ class Parser
                     $filter = array() ;
                     continue;
                 }
-                
+
             }
-            
+
             if ($token["token"] == "T_COMMA") {
                 $filter = array() ;
             }
         }
-        
+
         return self::$filters;
     }
     

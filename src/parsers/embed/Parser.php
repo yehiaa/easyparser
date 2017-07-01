@@ -5,14 +5,13 @@
  */
 class Parser 
 {
-    private static $_lexerResult; 
+    private static $lexerResult; 
     private static $embeds;
-    
-    
+
     public static function run($lexerResult)
     {
-		self::$embeds = null ;
-        self::$_lexerResult = $lexerResult;
+        self::$embeds = null ;
+        self::$lexerResult = $lexerResult;
         return self::excute($lexerResult);
     }
     
@@ -25,15 +24,14 @@ class Parser
         return $arrayToValidate ;
     }
     
-    private static function excute($lexerResult)
+    private static function excute()
     {
         // this is a complete query 
         // word > operator > Quoted 
         // word > operator > word || quoted
-        $cont = count(self::$_lexerResult);
         $embed = array() ;
         
-        foreach (self::$_lexerResult as $token) {
+        foreach (self::$lexerResult as $token) {
             
             switch ($token["token"]) {
                 case 'T_WORD':
@@ -67,7 +65,7 @@ class Parser
         if (isset($embed["resource"])) {
             self::$embeds [] = self::validate($embed);
         }
-        
+
         return self::$embeds;
     }
     

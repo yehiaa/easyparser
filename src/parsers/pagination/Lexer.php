@@ -4,5 +4,5 @@
  * Pagination Lexer 
  */
 class Lexer {
-{
+
 }

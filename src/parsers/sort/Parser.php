@@ -5,37 +5,35 @@
  */
 class Parser 
 {
-    private static $_lexerResult; 
+    private static $lexerResult; 
     private static $orderBys;
-    
-    
+
     public static function run($lexerResult)
     {
-        self::$_lexerResult = $lexerResult;
-		self::$orderBys = null ;
+        self::$lexerResult = $lexerResult;
+        self::$orderBys = null ;
         return self::excute($lexerResult);
     }
     
     private static function validate(array $valuesToParse)
     {
         if (!isset($valuesToParse["field"])) {
-            throw new \Exception("field not found ", 1);            
+            throw new \Exception("field not found ", 1);
         }
 
         if (!isset($valuesToParse["direction"])) {
-			$valuesToParse["direction"] = null ;
+            $valuesToParse["direction"] = null ;
         }
         
         return $valuesToParse ;
     }
-    
+
     private static function excute()
     {
         // this is a complete query 
         //field,-fieldtwo (-) means descending order 
-        $cont = count(self::$_lexerResult);
         $orderBy = array() ;
-        foreach (self::$_lexerResult as $token) {
+        foreach (self::$lexerResult as $token) {
             
             if ($token["token"] == "T_WORD") {
                 $orderBy["field"] = $token["match"];
@@ -60,5 +58,5 @@ class Parser
 
         return self::$orderBys;
     }
-    
+
 }
